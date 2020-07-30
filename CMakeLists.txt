@@ -4,6 +4,11 @@ set(CMAKE_BUILD_TYPE "Debug")
 
 get_filename_component(REDIS_ROOT "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
 
+execute_process(
+        COMMAND sh -c ./mkreleasehdr.sh
+        WORKING_DIRECTORY ${REDIS_ROOT}/src/
+)
+
 add_subdirectory(deps)
 add_subdirectory(src/modules)
 
